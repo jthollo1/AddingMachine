@@ -5,14 +5,16 @@
 //Description : AddingMachine will add and subtract numbers from a stored int total
 //				and will also format the output into a single string.
 
-package cse360assign2;
+package cse360assign3;
+
+import java.lang.Math;
 
 public class AddingMachine 
 {
 	// declare variables
-	private int total;
-	private int count;
-	private String totalstr;
+	protected int total;
+	protected int count;
+	protected String totalstr;
 
 	public AddingMachine() 
 	{
@@ -29,19 +31,28 @@ public class AddingMachine
 	
 	public void add(int newvalue) // this method adds the input to the total and adds it to the string
 	{
-		total += newvalue;
 		buildString(currentOp("+") + newvalue); // made a buildString and currentOp method to better organize this process
+		
+		total += newvalue;
 		count++; // keeping count of operations
 	}
 	
 	public void subtract(int newvalue) // this method subtracts the input from the total and adds it to the string
 	{
+		if(newvalue < 0)
+		{
+			buildString(currentOp("+") + Math.abs(newvalue));
+		}
+		else
+		{
+			buildString(currentOp("-") + newvalue);
+		}
+		
 		total -= newvalue;
-		buildString(currentOp("-") + newvalue);
 		count++;
 	}
 	
-	private String buildString(String newstr) // this method makes a complete string of our inputs
+	public String buildString(String newstr) // this method makes a complete string of our inputs
 	{									   // don't want a space before the first value
 		if(totalstr.length() != 0) 
 		{
@@ -56,7 +67,7 @@ public class AddingMachine
 		return totalstr;
 	}
 	
-	private String currentOp(String newop) // this method determines the operator and additional space 
+	public String currentOp(String newop) // this method determines the operator and additional space 
 	{									// that shows up before the input
 		String operator = "";
 		

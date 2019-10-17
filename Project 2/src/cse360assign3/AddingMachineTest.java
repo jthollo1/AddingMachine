@@ -5,7 +5,7 @@
 //Description : Class AddingMachineTest will test AddingMachine and compare it's toString()
 //				output to the expected output.
 
-package cse360assign2;
+package cse360assign3;
 
 import static org.junit.jupiter.api.Assertions.*;
 
